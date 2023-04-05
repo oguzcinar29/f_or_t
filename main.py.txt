@@ -1,0 +1,21 @@
+from question_model import Question
+from data import question_data
+from random import choice
+from quiz_brain import QuizBrain
+
+lst=[]
+for i in question_data:
+    question_text=i["question"]
+    question_answer=i["correct_answer"]
+    a=Question(question_text,question_answer)
+    lst.append(a)
+    
+q=QuizBrain(lst)
+
+while q.still_has_question():
+    q.next_question(lst)
+
+print(f"You've completed the quiz\nYour final score is {q.score,q.question_number}")    
+
+    
+
